@@ -39,8 +39,10 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
       fillColor: markerColor(feature.properties.mag),
       radius: markerRadius(feature.properties.mag),
       stroke: true,
-      weight: 0.1,
-      Opacity: 1.0
+      color: "gray",
+      weight: 0.5,
+      opacity: 0.7,
+      fillOpacity: 0.5
   };
 }
 
@@ -58,13 +60,13 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
         case magnitude > 1:
           return "blue";
         default:
-          return "light blue";
+          return "lightblue";
       }
     }
 
   // define a function to change radius size based on magnitude: 
   function markerRadius(magnitude) {
-    return magnitude * 5;
+    return magnitude * 3;
   }
 
   // create our geoJSON layer: 
@@ -97,29 +99,30 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     //   "Earthquakes": earthquakes
     // };
 
-    // // create a legend with layer control containing our base and overlay:
-    // L.control.layers(baseMaps, overlayMaps).addTo(myMap);
-
-    var mapLegend = L.control({
-      position: "bottomright"
-    });
+    // create a legend with layer control containing our base and overlay:
+    L.control.layers(baseMaps, overlayMaps, {
+      collapsed: false
+    }).addTo(myMap);
+    
+    var mapLegend = L.control({position: "bottomright"});
 
     // use L.DomUtil to create the legend
     mapLegend.onAdd = function () {
-      var div = L.DomUtil.create("div", "map legend");
+      var div = L.DomUtil.create("div", "info legend");
       var magnitudes = [0, 1, 2, 3, 4, 5];
       var colors = [
-        "light blue",
+        "lightblue",
         "blue",
         "green",
         "yellow",
         "orange",
         "red"
       ];
+      var legendInfo = "<h1>Earthquake Magnitudes</h1>"
       // loop through and update inner html with colors
       for (var i = 0; i < magnitudes.length; i++) {
         div.innerHTML +=
-          "<i style='background: " + colors[i] + "'></i> "
+          "<i style='background: " + colors[i] + "'></i>"
       }
       return div;
     };
