@@ -81,8 +81,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
         // select a property from the json we want to display as popup; 
         // here we choose property "place" which is written "feature.properties.place"
         // and then wrapped in layer.bindPopup to make it the popup
-        layer.bindPopup(`<h3>Magnitude: ${feature.properties.mag}</h3>
-      <p>Location: ${feature.properties.place}</p>`);
+        layer.bindPopup(`<h3>Magnitude: ${feature.properties.mag}</h3><p>Location: ${feature.properties.place}</p>`);
       },
     }).addTo(myMap);
 
@@ -94,22 +93,23 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
       "Outdoors": outdoors
     };
 
-    // // define our variable to hold our overlay layers (the overlay layer we've built is our geojson layer)
-    // var overlayMaps = {
-    //   "Earthquakes": earthquakes
-    // };
+    // define our variable to hold our overlay layers (the overlay layer we've built is our geojson layer)
+    var overlayMaps = {
+      "Earthquakes": earthquakes
+    };
 
     // create a legend with layer control containing our base and overlay:
     L.control.layers(baseMaps, overlayMaps, {
       collapsed: false
     }).addTo(myMap);
     
-    var mapLegend = L.control({position: "bottomright"});
+    var legend = L.control({position: "bottomright"});
 
     // use L.DomUtil to create the legend
-    mapLegend.onAdd = function () {
-      var div = L.DomUtil.create("div", "info legend");
-      var magnitudes = [0, 1, 2, 3, 4, 5];
+    legend.onAdd = function () {
+      
+      var ourDiv = L.DomUtil.create("div", "info legend");
+      var limits = [0, 1, 2, 3, 4, 5];
       var colors = [
         "lightblue",
         "blue",
@@ -118,13 +118,48 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
         "orange",
         "red"
       ];
+      var labels = [];
       var legendInfo = "<h1>Earthquake Magnitudes</h1>"
+      "<div class=\"labels\">" +
+      "<div class=\"min\">" + limits[0] + "</div>" +
+      "<div class=\"max\">" + limits[5] + "</div>" +
+      "</div>";
       // loop through and update inner html with colors
-      for (var i = 0; i < magnitudes.length; i++) {
-        div.innerHTML +=
-          "<i style='background: " + colors[i] + "'></i>"
-      }
-      return div;
+      ourDiv.innerHTML = legendInfo;
+
+      limits.forEach(function (limit, index) {
+        labels.push("<li style=\"background-color: " + colors[index] + "\"></li>");
+      });
+
+      ourDiv.innerHTML += "<ul>" + labels.join("") + "</ul>";
+      return ourDiv;
     };
-    mapLegend.addTo(myMap);
+
+    legend.addTo(myMap);
   });
+
+//   var mapLegend = L.control({position: "bottomright"});
+
+//   // use L.DomUtil to create the legend
+//   mapLegend.onAdd = function () {
+    
+//     var div = L.DomUtil.create("div", "info legend");
+//     var magnitudes = [0, 1, 2, 3, 4, 5];
+//     var colors = [
+//       "lightblue",
+//       "blue",
+//       "green",
+//       "yellow",
+//       "orange",
+//       "red"
+//     ];
+//     var legendInfo = "<h1>Earthquake Magnitudes</h1>"
+//     // loop through and update inner html with colors
+//     for (var i = 0; i < magnitudes.length; i++) {
+//       div.innerHTML +=
+//         "<i style='background: " + colors[i] + "'></i>"
+//     }
+//     return div;
+//   };
+//   mapLegend.addTo(myMap);
+// });

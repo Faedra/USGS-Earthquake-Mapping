@@ -1,10 +1,10 @@
-/* remove default margin and padding from body */
+/* remove default margin and padding from body
 body {
   padding: 0;
   margin: 0;
 }
 
-/* set map, body, and html to 100% of the screen size */
+set map, body, and html to 100% of the screen size
 #map,
 body,
 html {
@@ -14,3 +14,74 @@ html {
 h1 {
   text-align: center;
 }
+
+div.info.legend {
+  width:300px;
+  height:300px;
+}
+div.info i {
+  width:40px; 
+  height:20px;
+  display:block;
+  fill-opacity: 0.5
+} */
+
+body {
+  padding: 0;
+  margin: 0;
+ }
+ 
+ #map,
+ body,
+ html {
+  height: 100%;
+ }
+ 
+ .leaflet-popup-content {
+  text-align: center;
+ }
+ 
+ /* CSS from the Leaflet-Choropleth documentation */
+ .legend {
+  padding: 6px 8px;
+  font: 10px sans-serif;
+  font-weight: bold;
+  color: #555;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+ }
+ 
+ .legend ul {
+  padding: 0;
+  margin: 0;
+  clear: both;
+  list-style-type: none;
+ }
+ 
+ .legend li {
+  display: inline-block;
+  width: 60px;
+  height: 22px;
+  opacity: 0.6;
+ }
+ 
+ .legend .min {
+  float: left;
+  padding-bottom: 5px;
+ }
+ 
+ .legend .max {
+  float: right;
+ }
+
+ h3 {
+  text-align: left;
+  margin: 8px 0;
+ }
+
+ p {
+  text-align: left;
+  margin: 8px 0;
+ }
