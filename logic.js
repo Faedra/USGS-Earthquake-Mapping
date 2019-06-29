@@ -2,8 +2,8 @@
 
 // Create a map object
 var myMap = L.map("map", {
-  center: [37.09, -105.71],
-  zoom: 3,
+  center: [20, 0],
+  zoom: 2,
   // set default base and overlay layers
   // layers: [grayscale, earthquakes]
 });
@@ -118,8 +118,9 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
         "orange",
         "red"
       ];
+
       var labels = [];
-      var legendInfo = "<h1>Earthquake Magnitudes</h1>"
+      var legendInfo = "<h1>Earthquake Magnitude</h1><h2>Light Blue = 0 > Red = 5</h2>"
       "<div class=\"labels\">" +
       "<div class=\"min\">" + limits[0] + "</div>" +
       "<div class=\"max\">" + limits[5] + "</div>" +
@@ -136,4 +137,5 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     };
 
     legend.addTo(myMap);
+
   });
