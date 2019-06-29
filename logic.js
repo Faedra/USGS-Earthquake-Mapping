@@ -137,29 +137,3 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 
     legend.addTo(myMap);
   });
-
-//   var mapLegend = L.control({position: "bottomright"});
-
-//   // use L.DomUtil to create the legend
-//   mapLegend.onAdd = function () {
-    
-//     var div = L.DomUtil.create("div", "info legend");
-//     var magnitudes = [0, 1, 2, 3, 4, 5];
-//     var colors = [
-//       "lightblue",
-//       "blue",
-//       "green",
-//       "yellow",
-//       "orange",
-//       "red"
-//     ];
-//     var legendInfo = "<h1>Earthquake Magnitudes</h1>"
-//     // loop through and update inner html with colors
-//     for (var i = 0; i < magnitudes.length; i++) {
-//       div.innerHTML +=
-//         "<i style='background: " + colors[i] + "'></i>"
-//     }
-//     return div;
-//   };
-//   mapLegend.addTo(myMap);
-// });
