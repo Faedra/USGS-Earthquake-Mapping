@@ -1,37 +1,20 @@
-## Welcome to GitHub Pages
+# Earthquake Mapping - Visualizing Data with Leaflet
+## This project is hosted on GitHub Pages @ https://faedra.github.io/USGS-Earthquake-Mapping/
 
-You can use the [editor on GitHub](https://github.com/Faedra/earthquake_mapping/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+### Background:
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The US Geological Survey is responsible for providing scientific data about natural hazards, the health of our ecosystems and environment; and the impacts of climate and land-use change. Their scientists develop new methods and tools to supply timely, relevant, and useful information about the Earth and its processes. 
 
-### Markdown
+For this project, I utilized a live datafeed from USGS to visualize earthquake data. To create the visualizetion, I imported the data from my datasource, and created a map that plots all of the earthquakes from that data set based on their longitude and latitude. I visualized the data using Leaflet.js, along with with OpenStreetMap geodata and Mapbox open source mapping platform for mapping support. 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Data Source:
+The dataset for this project is available via the USGS GeoJson feed, available at: http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php. 
+The map data updates every 5 minutes, and is filtered to select worldwide earthquake events from the past 7 days. 
 
-```markdown
-Syntax highlighted code block
+### Project Images:
 
-# Header 1
-## Header 2
-### Header 3
+Markers reflect the magnitude of the earthquake in their size and color. The live map includes popups that provide additional information about each earthquake when its marker is clicked, as well as a legend that provides context for the map data. The map also has controls for switching between street, grayscale, and satellite background imagery.
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Faedra/earthquake_mapping/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+![](images/leaflet1.png)
+![](images/leaflet2.png)
+![](images/leaflet3.png)
